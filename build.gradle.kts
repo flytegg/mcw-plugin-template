@@ -1,7 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    application
     kotlin("jvm") version "1.9.0"
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("io.papermc.paperweight.userdev") version "1.5.5"
@@ -34,6 +33,10 @@ tasks {
         options.release.set(17)
     }
 
+    compileKotlin {
+        kotlinOptions.jvmTarget = "17"
+    }
+
     javadoc {
         options.encoding = Charsets.UTF_8.name()
     }
@@ -45,12 +48,4 @@ tasks {
     runServer {
         minecraftVersion("1.20.1")
     }
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "17"
-}
-
-application {
-    mainClass.set("TestPluginKt")
 }
