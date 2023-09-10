@@ -34,6 +34,10 @@ tasks {
         options.release.set(17)
     }
 
+    compileKotlin {
+        kotlinOptions.jvmTarget = "17"
+    }
+
     javadoc {
         options.encoding = Charsets.UTF_8.name()
     }
@@ -45,10 +49,6 @@ tasks {
     runServer {
         minecraftVersion("1.20.1")
     }
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "17"
 }
 
 application {
